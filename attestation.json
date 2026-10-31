@@ -1,9 +1,0 @@
-{
-  "pluginId": "neobase.cassebriques",
-  "repo": "NDesumeur/neobase-plugin-casse-briques",
-  "version": "1.0.0",
-  "sha256": "13f2546f6ba7214ab93bf60baaab8b5065c73dc40d91d0c973790fbdd4f43c12",
-  "approvedAt": "2026-10-31T16:22:01.601Z",
-  "neobase": ">=4.0.0",
-  "signature": "8Vin1Ujc7iUxCrhSclsG2vVda2AG6yWaamUZI+tW7wpnRy4U3Y3dq1ZpzSkoUNZLIo0PsNYB+wLfuk5q3rORDA=="
-}
