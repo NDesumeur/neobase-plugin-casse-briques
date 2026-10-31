@@ -1,0 +1,19 @@
+{
+  "id": "neobase.cassebriques",
+  "name": "Casse-briques",
+  "version": "1.0.0",
+  "author": "NDesumeur",
+  "description": "12 niveaux dessinés puis générés : briques à plusieurs vies, métal, explosives, bonus et capsules.",
+  "icon": "icon.png",
+  "entry": "index.js",
+  "view": "casse-briques",
+  "neobase": ">=4.0.0",
+  "type": "app",
+  "category": "Jeux",
+  "mobile": false,
+  "system": false,
+  "dependencies": {},
+  "permissions": [
+    "full"
+  ]
+}
