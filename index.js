@@ -1,16 +1,16 @@
 // Casse-briques : ton appli d'origine (HTML et code inchangés), livrée en plugin.
-// Ses données sont dans le dossier du plugin, que NeoBase sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoBase.
-// Elle tourne dans le bac à sable de NeoBase, avec ses outils d'interface (ctx.host) et seulement les autorisations de son plugin.json.
+// Ses données sont dans le dossier du plugin, que NeoDex sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoDex.
+// Elle tourne dans le bac à sable de NeoDex, avec ses outils d'interface (ctx.host) et seulement les autorisations de son plugin.json.
 const HTML = "<div class=\"appWrap\">\n      <div class=\"agHead\"><span class=\"label\">Casse-briques</span><span class=\"hint\" id=\"bkInfo\"></span><div class=\"agNav\"><select class=\"f gSel\" id=\"bkLevel\" title=\"Niveau de départ\"></select></div></div>\n      <div class=\"gameBox g43\"><canvas id=\"bkCanvas\" width=\"320\" height=\"240\"></canvas></div>\n      <div class=\"hint\">Souris ou flèches : raquette · clic ou espace : lancer la balle (et tirer avec les lasers) · P ou Échap : pause · écran titre, ← → : niveau de départ. Capsules : E large, M multi-balle, L lasers, S lente, C colle, F feu, V vie, R courte (piège).</div>\n    </div>";
 /*CSS-MOVED*/ const CSS = `.gameBox{display:grid;place-items:center;padding:10px;background:#05010b;box-shadow:0 0 0 3px var(--line2)}
 .gameBox canvas{width:min(100%,1152px);aspect-ratio:384/144;image-rendering:pixelated;cursor:var(--cp,pointer)}
 .gameBox.tall canvas{width:auto;height:min(720px,72vh);aspect-ratio:240/320}
 .gSel{width:auto;font-size:14px;padding:6px 10px;margin-right:8px}
 .gameBox.g43 canvas{aspect-ratio:320/240;width:min(100%,calc((100vh - 240px) * 4 / 3))}
-`;  // le style de ce plugin (il utilise les variables du thème de NeoBase)
+`;  // le style de ce plugin (il utilise les variables du thème de NeoDex)
 export default async function (ctx) {
   const view = ctx.view;
-  if (!ctx.host) { view.textContent = "Ce plugin doit être approuvé par NeoBase pour s'ouvrir."; return; }
+  if (!ctx.host) { view.textContent = "Ce plugin doit être approuvé par NeoDex pour s'ouvrir."; return; }
   const host = ctx.host, { el, toast, sfx, ask, newTab, pixIcon, PIX, WX } = host;
   const folder = ctx.folder, legacy = ctx.legacy || {};
   ctx.host.addStyle(CSS);
@@ -131,7 +131,7 @@ function bkStart(level = 1) {
   Object.assign(bk, {g: $('bkCanvas').getContext('2d'), mode: 'ready', tick: 0, level, lives: 3, score: 0, px: BK.W / 2, target: null, keys: {}, parts: [], shake: 0, cool: 0, overAt: 0,
     stars: Array.from({length: 60}, () => [Math.random() * BK.W, Math.random() * BK.H, Math.random()])});
   bkLoad(); bkLevels();
-  gameLoop(bk, 'neodyme:breakout', bkUpdate, bkDraw);
+  gameLoop(bk, 'neodex:breakout', bkUpdate, bkDraw);
 }
 const bkPW = () => bk.fx.wide ? 66 : bk.fx.narrow ? 28 : 44;
 const bkSpeed = () => (Math.min(3.9, 2.3 + (bk.level - 1) * .12) + Math.min(.6, bk.lt * .00025)) * (bk.fx.slow ? .7 : 1);
@@ -286,5 +286,5 @@ document.addEventListener('keyup', e => {
 
 $('bkLevel').onchange = () => bkStart(+$('bkLevel').value);  // (non indenté : les textes sur plusieurs lignes restent exactement les tiens)
   // ---- fin ----
-  ctx.onOpen(() => { bk ? gameLoop(bk, 'neodyme:breakout', bkUpdate, bkDraw) : bkStart(); });
+  ctx.onOpen(() => { bk ? gameLoop(bk, 'neodex:breakout', bkUpdate, bkDraw) : bkStart(); });
 }
