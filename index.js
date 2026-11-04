@@ -1,6 +1,6 @@
 // Casse-briques : ton appli d'origine (HTML et code inchangés), livrée en plugin.
 // Ses données sont dans le dossier du plugin, que NeoBase sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoBase.
-// Elle demande l'accès complet pour utiliser les outils d'interface de NeoBase. NeoBase ne l'ouvre que si elle est signée.
+// Elle tourne dans le bac à sable de NeoBase, avec ses outils d'interface (ctx.host) et seulement les autorisations de son plugin.json.
 const HTML = "<div class=\"appWrap\">\n      <div class=\"agHead\"><span class=\"label\">Casse-briques</span><span class=\"hint\" id=\"bkInfo\"></span><div class=\"agNav\"><select class=\"f gSel\" id=\"bkLevel\" title=\"Niveau de départ\"></select></div></div>\n      <div class=\"gameBox g43\"><canvas id=\"bkCanvas\" width=\"320\" height=\"240\"></canvas></div>\n      <div class=\"hint\">Souris ou flèches : raquette · clic ou espace : lancer la balle (et tirer avec les lasers) · P ou Échap : pause · écran titre, ← → : niveau de départ. Capsules : E large, M multi-balle, L lasers, S lente, C colle, F feu, V vie, R courte (piège).</div>\n    </div>";
 /*CSS-MOVED*/ const CSS = `.gameBox{display:grid;place-items:center;padding:10px;background:#05010b;box-shadow:0 0 0 3px var(--line2)}
 .gameBox canvas{width:min(100%,1152px);aspect-ratio:384/144;image-rendering:pixelated;cursor:var(--cp,pointer)}
